@@ -1,0 +1,19 @@
+{
+    "plugins": {
+        "@release-it/conventional-changelog": {
+            "preset": "conventionalcommits"
+        }
+    },
+    "git": {
+        "tag": false,
+        "commit": false,
+        "push": false,
+        "requireCleanWorkingDir": false
+    },
+    "github": {
+        "release": false
+    },
+    "npm": {
+        "publish": false
+    }
+}

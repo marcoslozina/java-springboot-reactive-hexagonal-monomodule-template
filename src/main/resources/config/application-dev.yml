@@ -1,0 +1,29 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth.dev.example.com/
+          jwk-set-uri: https://auth.dev.example.com/.well-known/jwks.json
+  r2dbc:
+    url: ${DB_URL:r2dbc:postgresql://dev-db.example.com:5432/dev_db}
+    username: ${DB_USERNAME:dev_user}
+    password: ${DB_PASSWORD:dev_pass}
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 20
+      max-idle-time: 10m
+
+  kafka:
+    bootstrap-servers: kafka.dev.example.com:9092
+    consumer:
+      group-id: template-service-dev
+    producer:
+      retries: 5
+
+logging:
+  level:
+    root: DEBUG
+    com.company.templateservice: DEBUG
+    org.springframework.web: DEBUG

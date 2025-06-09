@@ -1,0 +1,55 @@
+✅ Pasos que has realizado hasta ahora
+1️⃣ Creación y configuración de la API
+🔹 Creaste una API REST en AWS API Gateway con las rutas:
+
+/public
+/secure
+🔹 Implementaste una integración Mock para respuestas de prueba.
+2️⃣ Configuración de seguridad inicial
+🔹 Definiste un "Usage Plan" (BasicProtectionPlan) para limitar el número de requests por usuario.
+🔹 Creaste una API Key para autorizar los accesos.
+🔹 Configuraste /public y /secure para que requieran API Key obligatoriamente.
+🔹 Probaste la seguridad:
+
+Sin API Key: 🔴 403 Forbidden
+Con API Key: ✅ 200 OK
+3️⃣ Implementación de la seguridad contra abusos
+🔹 Limitaste el tráfico con un Usage Plan:
+
+5 requests por segundo
+Máximo 100 requests por mes
+🔹 Aseguraste que la API no genere costos inesperados al bloquear accesos anónimos.
+🔒 Próximos pasos en seguridad
+Ahora que la API está protegida con API Keys, podemos aumentar la seguridad con estos pasos opcionales:
+
+🛡️ Paso 1: Protección contra ataques DDoS
+💡 Usar AWS WAF para bloquear tráfico malicioso 🔹 AWS WAF (Web Application Firewall) permite bloquear IPs sospechosas o detectar tráfico malicioso antes de que llegue a la API.
+📌 Siguientes acciones:
+✅ Configurar una ACL de WAF y asociarla a la API para evitar ataques.
+
+🔑 Paso 2: Implementar OAuth2 con Cognito o JWT
+💡 Actualmente estás usando API Keys, pero puedes mejorar la autenticación usando OAuth2 con Cognito o Keycloak.
+📌 Siguientes acciones:
+✅ Configurar AWS Cognito o Keycloak para autenticación con JWT.
+✅ Implementar un "Custom Authorizer" en API Gateway para validar los tokens.
+
+🌍 Paso 3: Restringir el acceso por IP
+💡 Bloquear tráfico no deseado usando Resource Policies
+🔹 Puedes restringir el acceso a ciertas IPs o rangos de direcciones.
+📌 Siguientes acciones:
+✅ Configurar Resource Policies en API Gateway para permitir solo IPs de confianza.
+
+📝 Paso 4: Activar logs y monitoreo
+💡 Habilitar CloudWatch Logs y AWS X-Ray
+🔹 Esto permite ver todas las requests y detectar posibles abusos.
+📌 Siguientes acciones:
+✅ Activar CloudWatch Logs para registrar tráfico.
+✅ Configurar X-Ray para analizar latencia y errores.
+
+🚀 Siguientes pasos recomendados
+1️⃣ ¿Quieres proteger la API con AWS WAF?
+2️⃣ ¿Quieres implementar OAuth2 con Cognito o Keycloak?
+3️⃣ ¿Quieres restringir por IP para mayor seguridad?
+4️⃣ ¿Quieres habilitar logs y monitoreo en CloudWatch?
+
+🔹 Dime qué prefieres hacer primero y lo configuramos. 🚀🔥

@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: template-service
+
+  # 🧪 Base de datos embebida
+  r2dbc:
+    url: r2dbc:h2:mem:///devdb
+    username: sa
+    password:
+    pool:
+      enabled: true
+      initial-size: 5
+      max-size: 10
+
+  sql:
+    init:
+      mode: always
+
+  # 🔐 Seguridad local con JWT firmado manualmente
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:public-key.pem
+
+logging:
+  level:
+    root: DEBUG
+    com.company.templateservice: DEBUG
+    org.springframework.web: DEBUG

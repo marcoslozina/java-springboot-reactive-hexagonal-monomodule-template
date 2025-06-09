@@ -1,0 +1,23 @@
+receivers:
+    otlp:
+        protocols:
+            grpc:
+            http:
+
+exporters:
+    logging:
+    prometheus:
+        endpoint: "0.0.0.0:9464"
+    otlp:
+        endpoint: "http://grafana:4317"
+        headers:
+            Authorization: "Bearer your-api-key"
+
+service:
+    pipelines:
+        traces:
+            receivers: [ otlp ]
+            exporters: [ logging, otlp ]
+        metrics:
+            receivers: [ otlp ]
+            exporters: [ prometheus ]

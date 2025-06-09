@@ -1,0 +1,29 @@
+spring:
+  r2dbc:
+    url: ${DB_URL:r2dbc:postgresql://uat-db.example.com:5432/uat_db}
+    username: ${DB_USERNAME:uat_user}
+    password: ${DB_PASSWORD:uat_pass}
+    pool:
+      enabled: true
+      initial-size: 15
+      max-size: 30
+      max-idle-time: 15m
+
+  kafka:
+    bootstrap-servers: kafka.uat.example.com:9092
+    consumer:
+      group-id: template-service-uat
+    producer:
+      retries: 10
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth.uat.example.com/
+          jwk-set-uri: https://auth.uat.example.com/.well-known/jwks.json
+
+logging:
+  level:
+    root: ERROR
+    com.company.templateservice: WARN

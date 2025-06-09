@@ -1,0 +1,5 @@
+spring:
+  security:
+    user:
+      name: ${TEST_ADMIN_USER:testuser}
+      password: ${TEST_ADMIN_PASSWORD:testpass}

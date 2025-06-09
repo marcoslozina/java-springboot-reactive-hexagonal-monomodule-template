@@ -1,0 +1,83 @@
+# ──────────────── 🛠️ GRADLE ────────────────
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradlew
+!gradlew.bat
+
+# Forzamos seguimiento de configuración de Gradle
+!gradle/wrapper/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# ──────────────── 💻 IDEs ────────────────
+.idea/
+*.iml
+*.ipr
+*.iws
+
+.vscode/
+*.swp
+*.swo
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# ──────────────── 📦 NODE Y NPM ────────────────
+node_modules/
+
+# ──────────────── 🧪 TESTS & COVERAGE ────────────────
+/test-results/
+/target/
+coverage/
+/reports/
+/jacoco/
+
+# ──────────────── 🧹 SONAR ────────────────
+.scannerwork/
+
+# ──────────────── 🔧 ARCHIVOS TEMPORALES Y LOGS ────────────────
+*.log
+logs/
+hs_err_pid*
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.bak
+
+# ──────────────── 🛠️ FORMATO, LINTER & CACHÉ ────────────────
+/.spotless/
+/.editorconfig/
+/.mvn/
+/.cache/
+
+# ──────────────── 🧼 OPENAPI Y GENERADOS ────────────────
+/openapi/
+/generated/
+
+# ──────────────── 🔧 CI/CD & DOCKER ────────────────
+.git/hooks/
+!docker-compose.yml
+!Dockerfile
+!.gitlab-ci.yml
+!.github/**
+
+# ──────────────── ✅ NO IGNORAR CONFIGURACIÓN NI SCRIPTS ────────────────
+!config/**
+!scripts/**
+!infra/**
+!ci/**
+!**/*.yml
+!**/*.json
+!**/*.env
+!**/*.db
+!**/*.sqlite
+
+# ──────────────── 📄 NO IGNORAR ARCHIVOS DE CÓDIGO ────────────────
+!**/*.kt
+!**/*.java
+!**/build.gradle.kts
+!**/settings.gradle.kts

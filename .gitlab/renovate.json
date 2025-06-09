@@ -1,0 +1,23 @@
+{
+    "extends": [
+        "config:base"
+    ],
+    "packageRules": [
+        {
+            "matchManagers": [
+                "gradle"
+            ],
+            "matchPackagePatterns": [
+                ".*"
+            ],
+            "groupName": "Gradle Dependencies",
+            "updateTypes": [
+                "minor",
+                "patch"
+            ]
+        }
+    ],
+    "gradle": {
+        "enabled": true
+    }
+}

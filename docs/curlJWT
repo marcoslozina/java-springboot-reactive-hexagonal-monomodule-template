@@ -1,0 +1,13 @@
+curl --location --request POST 'http://localhost:8080/realms/demo-realm/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_id=template-client' \
+--data-urlencode 'client_secret=template-secret' \
+--data-urlencode 'username=admin' \
+--data-urlencode 'password=admin123'
+
+curl -X GET http://localhost:8081/admin/hello \
+  -H "Authorization: Bearer TU_ACCESS_TOKEN_ACÁ"
+
+curl -X GET http://localhost:8081/admin/hello \
+  -H "Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlYTZhNGM0ZC02MWZjLTQwODItOTI4NS03MzJmYTllOGJhYjgifQ.eyJleHAiOjE3NDI5NTk0MzMsImlhdCI6MTc0Mjk1NzYzMywianRpIjoiYWZkYjgwMDQtOWY2Mi00YWY1LTlmZGQtODYxMjViNzdlZjc2IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9kZW1vLXJlYWxtIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9kZW1vLXJlYWxtIiwic3ViIjoiM2MxYzhkYzUtOWMxMC00MzMxLTgzZjctZGE3Y2I4MWYwNGUyIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6InRlbXBsYXRlLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiI3YzQzMDBkZi02OTZmLTRjYjktODFjMC1mNjk0Y2I0ZWUxYjUiLCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YzQzMDBkZi02OTZmLTRjYjktODFjMC1mNjk0Y2I0ZWUxYjUifQ.c1-Hs5f5InGbO0AIGpPW89xCpNfUCucyZXGhhc_fbwLioeqqIMxDJDuQdzDgSQylCnoP5LY02G6rpqUWJzDpUw"

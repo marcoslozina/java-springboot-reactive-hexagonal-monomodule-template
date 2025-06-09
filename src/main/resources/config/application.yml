@@ -1,0 +1,79 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    vault:
+      uri: http://localhost:8200
+      authentication: TOKEN
+      token: myroot
+      kv:
+        enabled: true
+
+  application:
+    name: template-service
+
+  # 📌 Configuración de Base de Datos Reactiva
+  r2dbc:
+    url: ${DB_URL:r2dbc:h2:mem:///testdb?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 20
+      max-idle-time: 10m
+
+  sql:
+    init:
+      mode: always  # Permitir carga de scripts SQL al iniciar en H2
+
+  # 🔐 Configuración de Seguridad OAuth2 y JWT
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://tu-proveedor-oauth2.com/
+          jwk-set-uri: https://tu-proveedor-oauth2.com/.well-known/jwks.json
+
+  # ⚡ Configuración de Kafka Reactivo
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
+    producer:
+      retries: 3
+      acks: all
+      properties:
+        enable.idempotence: true
+    consumer:
+      group-id: ${KAFKA_GROUP_ID:template-service}
+      auto-offset-reset: latest
+    listener:
+      ack-mode: manual
+      missing-topics-fatal: false
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.springframework.r2dbc: DEBUG
+    org.apache.kafka: WARN  # Reducir el ruido de Kafka en logs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics
+  health:
+    db:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  api-docs:
+    enabled: true

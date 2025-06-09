@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "🔍 Ejecutando validaciones antes del commit..."
+
+./gradlew spotlessApply checkstyleMain sonar --quiet
+
+if [ $? -ne 0 ]; then
+  echo "❌ Validaciones fallaron. Commit cancelado."
+  exit 1
+fi
+
+echo "✅ Validaciones completadas con éxito. Procediendo con el commit."

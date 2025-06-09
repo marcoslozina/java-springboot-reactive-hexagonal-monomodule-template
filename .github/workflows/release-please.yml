@@ -1,0 +1,36 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: temurin
+
+      - name: Grant permission to Gradle wrapper
+        run: chmod +x ./gradlew
+
+      - name: Run tests before release
+        run: ./gradlew clean test
+
+      - name: Run release-please
+        uses: google-github-actions/release-please-action@v4
+        with:
+          release-type: simple
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          pull-request-title-pattern: "🚀 Release version ${version}"

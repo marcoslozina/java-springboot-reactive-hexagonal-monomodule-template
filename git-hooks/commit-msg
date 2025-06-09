@@ -1,0 +1,11 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE=$1
+REGEX="^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\\([a-zA-Z0-9_-]+\\))?: .{1,72}"
+
+if ! grep -qE "$REGEX" "$COMMIT_MSG_FILE"; then
+  echo "❌ El mensaje de commit no cumple con la convención 'Conventional Commits'."
+  echo "➡️  Ejemplo válido: feat(application): agregar nuevo caso de uso"
+  echo "Tipos válidos: feat, fix, docs, style, refactor, perf, test, chore, build, ci"
+  exit 1
+fi

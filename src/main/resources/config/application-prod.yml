@@ -1,0 +1,29 @@
+spring:
+  r2dbc:
+    url: ${DB_URL:r2dbc:postgresql://prod-db.example.com:5432/prod_db}
+    username: ${DB_USERNAME:prod_user}
+    password: ${DB_PASSWORD:prod_pass}
+    pool:
+      enabled: true
+      initial-size: 20
+      max-size: 50
+      max-idle-time: 30m
+
+  kafka:
+    bootstrap-servers: kafka.prod.example.com:9092
+    consumer:
+      group-id: template-service-prod
+    producer:
+      retries: 15
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth.mycompany.com/
+          jwk-set-uri: https://auth.mycompany.com/.well-known/jwks.json
+
+logging:
+  level:
+    root: ERROR
+    com.company.templateservice: WARN

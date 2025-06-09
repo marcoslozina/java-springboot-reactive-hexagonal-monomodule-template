@@ -1,0 +1,41 @@
+http://localhost:8081/webjars/swagger-ui/index.html#/
+Pasos:
+
+// Swagger para WebFlux
+implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0'
+
+// Validación (opcional pero recomendado)
+implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+implementation 'org.glassfish:jakarta.el:4.0.2'
+
+server:
+  port: 8081
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  api-docs:
+    enabled: true
+
+.pathMatchers(
+    "/swagger-ui.html",
+    "/swagger-ui/**",
+    "/v3/api-docs/**",
+    "/v3/api-docs.yaml",
+    "/v3/api-docs/swagger-config",
+    "/webjars/**" // ⚠️ Esto es esencial
+).permitAll()
+
+
+@RestController
+@RequestMapping("/admin")
+public class AdminController {
+
+  @GetMapping("/hello")
+  @Operation(summary = "Saluda como admin")
+  @ApiResponse(responseCode = "200", description = "Saludo OK")
+  public Mono<String> helloAdmin() {
+    return Mono.just("Hello Admin 👋");
+  }
+}

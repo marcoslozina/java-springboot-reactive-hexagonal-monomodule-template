@@ -1,0 +1,50 @@
+{
+    "realm": "demo-realm",
+    "enabled": true,
+    "users": [
+        {
+            "username": "admin",
+            "enabled": true,
+            "emailVerified": true,
+            "email": "admin@example.com",
+            "firstName": "Admin",
+            "lastName": "User",
+            "requiredActions": [],
+            "credentials": [
+                {
+                    "type": "password",
+                    "value": "admin123",
+                    "temporary": false
+                }
+            ],
+            "realmRoles": [
+                "ADMIN"
+            ]
+        }
+    ],
+    "clients": [
+        {
+            "clientId": "template-client",
+            "secret": "template-secret",
+            "enabled": true,
+            "publicClient": false,
+            "protocol": "openid-connect",
+            "redirectUris": [
+                "*"
+            ],
+            "serviceAccountsEnabled": true,
+            "standardFlowEnabled": true,
+            "directAccessGrantsEnabled": true,
+            "attributes": {
+                "access.token.signed.response.alg": "RS256"
+            }
+        }
+    ],
+    "roles": {
+        "realm": [
+            {
+                "name": "ADMIN"
+            }
+        ]
+    }
+}
