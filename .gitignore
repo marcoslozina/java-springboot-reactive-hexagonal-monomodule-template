@@ -66,7 +66,7 @@ Thumbs.db
 !.github/**
 
 # ──────────────── ✅ NO IGNORAR CONFIGURACIÓN NI SCRIPTS ────────────────
-!config/**
+!src/main/java/com/company/project/templateservice/config/**
 !scripts/**
 !infra/**
 !ci/**
