@@ -65,7 +65,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=marcoslozina_java-springboot-reactive-hexagonal-multimodule-template
+            -Dsonar.projectKey=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template
             -Dsonar.organization=marcoslozina
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml
@@ -116,7 +116,7 @@ jobs:
           mkdir -p .badge-data
 
           vulnerabilities=$(curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
-            "https://sonarcloud.io/api/measures/component?component=marcoslozina_template-service&metricKeys=vulnerabilities" \
+            "https://sonarcloud.io/api/measures/component?component=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template&metricKeys=vulnerabilities" \
             | jq -r '.component.measures[0].value // "0"')
 
           if (( vulnerabilities == 0 )); then

@@ -16,9 +16,13 @@ updates:
       - dependency-name: "net.minidev*"
     allow:
       - dependency-type: "direct"
+    reviewers:
+      - marcoslozina
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
     security-updates: true   # <-- También para GitHub Actions
+    reviewers:
+      - marcoslozina
