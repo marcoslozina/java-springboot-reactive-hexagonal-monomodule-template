@@ -1,11 +1,15 @@
+// build.gradle.kts
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.testing.jacoco.tasks.JacocoReport
 
 plugins {
+    id("jacoco")
     id("org.springframework.boot") version "3.2.5"
     id("io.spring.dependency-management") version "1.1.4"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
-    id("checkstyle") // sin versión si es plugin interno
+    id("checkstyle")
 }
 
 group = "com.company.project"
@@ -21,8 +25,6 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "21"
     }
 }
-
-// No agregar repositories {} aquí porque usamos settings.gradle.kts para eso
 
 dependencyManagement {
     imports {
@@ -48,3 +50,27 @@ checkstyle {
     configFile = file("src/main/java/com/company/project/templateservice/config/checkstyle/checkstyle.xml")
 }
 
+tasks.test {
+    useJUnitPlatform()
+    finalizedBy("jacocoTestReport")
+}
+
+// ✅ Modificamos la tarea existente en lugar de crear una nueva
+tasks.named<JacocoReport>("jacocoTestReport") {
+    dependsOn(tasks.test)
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+
+    classDirectories.setFrom(
+        fileTree("build/classes/java/main") {
+            exclude("**/config/**", "**/dto/**")
+        }
+    )
+    sourceDirectories.setFrom(files("src/main/java"))
+    executionData.setFrom(fileTree("build") {
+        include("jacoco/test.exec")
+    })
+}
