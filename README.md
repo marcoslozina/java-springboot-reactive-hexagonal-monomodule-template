@@ -1,4 +1,4 @@
-# 🚀 Reactive Microservice Template (Multi-Module)
+# 🚀 Reactive Microservice Template (Mono-Module)
 
 ## 📊 Project Health
 [![CI](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/actions/workflows/ci.yml)
