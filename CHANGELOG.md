@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.0.0 (2025-06-14)
+
+
+### Features
+
+* remove sonar properties ([c66eed6](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/c66eed65cf6d10e72572da2ea7185445bfecfa95))
+* subida inicial ([ed1697b](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/ed1697b46d39b56c88204b4bd44999fc923e1c5b))
+
+
+### Bug Fixes
+
+* fix build ([ef137a0](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/ef137a06d6fa83bdc2939bcd551e52012a7ec11e))
+* fix build.gradle.kts ([74d7b67](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/74d7b673f09a0afa4508733bb040ffeb8f207df9))
+* fix configuration ([1ca2814](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/1ca2814fd0af9800e8ce4333f5baa6043ccdafcc))
+* fix configuration ([9a39384](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/9a393849e5df5bb67427a2efc784b3b083ce0bda))
+* fix release please ([cbc62c3](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/cbc62c300b47d6e69f12c080290b785147f59f3f))
+* fix rules ([1a31f22](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/1a31f2204d78d8f23fe78669b765e0381baedbf3))
+* fix sonar ([f5c990d](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/f5c990df3bfe683b85c5099ac8eaef2c29dfc0e0))
+* fix sonar properti ([042989b](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/042989bfa6d2f515d6741a2e8264ac3f7ec136ce))
+* fix sonar property ([2df1009](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/2df10094edfe422b9007976917067e4f8b25fefb))
+
 ## [1.2.12](https://github.com/marcoslozina/template-service/compare/v1.2.11...v1.2.12) (2025-06-09)
 
 
