@@ -8,4 +8,11 @@ class ApplicationTest {
 
   @Test
   void contextLoads() {}
+
+    @Test
+    void mainRunsWithoutExceptions() {
+        Application.main(new String[]{});
+    }
+
+
 }
