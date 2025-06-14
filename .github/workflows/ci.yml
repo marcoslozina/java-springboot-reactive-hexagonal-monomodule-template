@@ -35,7 +35,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Run tests and generate coverage reports
-        run: ./gradlew clean build test jacocoTestReport jacocoRootReport --no-daemon
+        run: ./gradlew clean build jacocoTestReport --no-daemon
 
       ##############################################################
       # 📦 Upload test and coverage reports as artifacts
@@ -68,7 +68,7 @@ jobs:
             -Dsonar.projectKey=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template
             -Dsonar.organization=marcoslozina
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml
+            -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco/test/jacocoTestReport.xml
 
       ##############################################################
       # 📥 Submit dependency graph to GitHub
@@ -87,8 +87,8 @@ jobs:
       - name: Generate coverage.json
         run: |
           mkdir -p .badge-data
-          coverage=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@covered)" build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml || echo "0")
-          missed=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@missed)" build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml || echo "0")
+          coverage=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@covered)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
+          missed=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@missed)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
           total=$((coverage + missed))
 
           if [ "$total" -eq 0 ]; then
