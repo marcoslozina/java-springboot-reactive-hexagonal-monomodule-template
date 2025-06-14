@@ -56,13 +56,13 @@ jobs:
           path: build/reports/jacoco/
 
       ##############################################################
-      # 📊 SonarCloud static code analysis
+      # 📊 SonarCloud static code analysis (✅ acción nueva)
       ##############################################################
 
       - name: SonarCloud Analysis
-        uses: SonarSource/sonarcloud-github-action@v5
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN_2: ${{ secrets.SONAR_TOKEN_2 }}
         with:
           args: >
             -Dsonar.projectKey=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template
