@@ -59,7 +59,7 @@ jobs:
       ##############################################################
 
       - name: SonarCloud Analysis
-        uses: SonarSource/sonarqube-scan-action@v5.0.0
+        uses: SonarSource/sonarqube-scan-action@v5.2.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_2 }}
         with:
