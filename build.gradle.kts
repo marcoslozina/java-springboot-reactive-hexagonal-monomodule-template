@@ -1,9 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import Versions
 import org.gradle.testing.jacoco.tasks.JacocoReport
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("jacoco")
-    id("org.springframework.boot") version "3.2.5"
+    id("org.springframework.boot") version Versions.springBoot
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "2.1.21"
@@ -11,41 +12,53 @@ plugins {
 }
 
 group = "com.company.project"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0-RELEASE"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "21"
+kotlin {
+    jvmToolchain(21)
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
     }
 }
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.boot:spring-boot-dependencies:3.2.5")
+        mavenBom("org.springframework.boot:spring-boot-dependencies:${Versions.springBoot}")
     }
 }
 
 dependencies {
-    // Core app
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
-    implementation("io.swagger.core.v3:swagger-annotations:2.2.33")
+    // ✅ Usar dependencias centralizadas
+    implementation(Dependencies.Spring.bootWebflux)
+    implementation(Dependencies.Spring.bootSecurity)
+    implementation(Dependencies.Spring.bootOauth2)
+
+    // Observabilidad, OpenAPI, Validaciones
+    implementation(Dependencies.Observability.micrometerPrometheus)
+    implementation(Dependencies.OpenAPI.springdocWebflux)
+    implementation(Dependencies.Validation.jakartaValidation)
+    implementation(Dependencies.Validation.hibernateValidator)
+    implementation(Dependencies.Validation.jakartaEl)
+
+    // Logging y seguridad
+    implementation(Dependencies.Logging.logstashLogback)
 
     // Test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("com.tngtech.archunit:archunit:1.3.0")
-    testImplementation("com.tngtech.archunit:archunit-junit5:1.3.0")
-    testImplementation("org.springframework.security:spring-security-test")
+    testImplementation(Dependencies.Spring.bootTest)
+    testImplementation(Dependencies.Test.junitApi)
+    testImplementation(Dependencies.Test.junitEngine)
+    testImplementation(Dependencies.Test.archunit)
+    testImplementation(Dependencies.Test.reactorTest)
+    testImplementation(Dependencies.Test.springSecurityTest)
 }
 
 checkstyle {
-    toolVersion = "10.12.2"
+    toolVersion = Versions.checkstyleVersion
     configFile = file("src/main/java/com/company/project/templateservice/config/checkstyle/checkstyle.xml")
 }
 
@@ -56,12 +69,10 @@ tasks.test {
 
 tasks.named<JacocoReport>("jacocoTestReport") {
     dependsOn(tasks.test)
-
     reports {
         xml.required.set(true)
         html.required.set(true)
     }
-
     classDirectories.setFrom(
         fileTree("build/classes/java/main") {
             exclude("**/config/**", "**/dto/**")

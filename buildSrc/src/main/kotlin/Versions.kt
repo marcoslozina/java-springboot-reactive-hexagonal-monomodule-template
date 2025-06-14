@@ -40,4 +40,6 @@ object Versions {
     const val springSecurity = "6.2.4" // 🔐 updated from 6.2.3
     const val versionCommonsIo = "2.15.1"
     const val versionJetty = "11.0.20"
+    const val springBoot = "3.2.5"
+    const val checkstyleVersion = "10.12.2"
 }
