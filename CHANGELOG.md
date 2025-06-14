@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.1](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.0.0...v1.0.1) (2025-06-14)
+
+
+### Bug Fixes
+
+* dependencies update ([3357d03](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/3357d030e56d6143164a66c9d2ce1a7c68f59c07))
+* fix de vulnerabilidades ([ed2de94](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/ed2de9481a663e575cac8b7615e22dad397b469e))
+* fix dependabot ([87212e7](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/87212e7355ad0f2da5c0768761df2c2d6655ae4f))
+* fix readme ([2b131b4](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/2b131b4dccf97f51e959a053ea1dbbb25b48e1e7))
+* update dependencies ([23351ef](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/23351efac6ecd3c967e7528815e467d94206eb83))
+
 ## 1.0.0 (2025-06-14)
 
 
