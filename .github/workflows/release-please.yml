@@ -32,5 +32,5 @@ jobs:
         uses: google-github-actions/release-please-action@v4
         with:
           release-type: simple
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN_2 }}
           pull-request-title-pattern: "🚀 Release version ${version}"
