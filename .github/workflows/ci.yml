@@ -62,7 +62,7 @@ jobs:
       - name: SonarCloud Analysis
         uses: SonarSource/sonarqube-scan-action@v5.0.0
         env:
-          SONAR_TOKEN_2: ${{ secrets.SONAR_TOKEN_2 }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_2 }}
         with:
           args: >
             -Dsonar.projectKey=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template
