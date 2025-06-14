@@ -104,10 +104,12 @@ jobs:
             > .badge-data/coverage.json
 
       - name: Generate security.json (from SonarCloud)
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_2 }}
         run: |
           mkdir -p .badge-data
 
-          vulnerabilities=$(curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
+          vulnerabilities=$(curl -s -u "${SONAR_TOKEN}:" \
             "https://sonarcloud.io/api/measures/component?component=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template&metricKeys=vulnerabilities" \
             | jq -r '.component.measures[0].value // "0"')
 
@@ -120,15 +122,15 @@ jobs:
           fi
 
           jq -n \
-            --arg count "$vulnerabilities" \
+            --arg message "$vulnerabilities" \
             --arg color "$color" \
-            '{schemaVersion:1,label:"Vulnerabilities",message:$count,color:$color}' \
+            '{schemaVersion:1,label:"Vulnerabilities",message:$message,color:$color}' \
             > .badge-data/security.json
 
-      - name: Show updated security badge
+      - name: Show updated badge data
         run: |
-          echo "📋 Contents of security.json:"
-          cat .badge-data/security.json
+          echo "📋 Contents of badge files:"
+          cat .badge-data/*.json || echo "No badge files"
           echo "--- Git status ---"
           git status
 
