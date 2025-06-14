@@ -2,18 +2,27 @@ import Versions
 import org.gradle.testing.jacoco.tasks.JacocoReport
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+// ─────────────────────────────────────────────────────────────
+// 📦 Plugins
+// ─────────────────────────────────────────────────────────────
 plugins {
-    id("jacoco")
+    id("jacoco") // Core plugin, no requiere versión
+    id("checkstyle") // Core plugin, no requiere versión
     id("org.springframework.boot") version Versions.springBoot
-    id("io.spring.dependency-management") version "1.1.7"
-    kotlin("jvm") version "1.9.24"
-    kotlin("plugin.spring") version "2.1.21"
-    id("checkstyle")
+    id("io.spring.dependency-management") version Versions.dependencyManagement
+    kotlin("jvm") version Versions.kotlin
+    kotlin("plugin.spring") version Versions.kotlinSpring
 }
 
+// ─────────────────────────────────────────────────────────────
+// 🏷️ Project metadata
+// ─────────────────────────────────────────────────────────────
 group = "com.company.project"
 version = "1.0.0-RELEASE"
 
+// ─────────────────────────────────────────────────────────────
+// ⚙️ Java & Kotlin compatibility
+// ─────────────────────────────────────────────────────────────
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
@@ -26,29 +35,35 @@ kotlin {
     }
 }
 
+// ─────────────────────────────────────────────────────────────
+// 📦 Dependency Management (Spring BOM)
+// ─────────────────────────────────────────────────────────────
 dependencyManagement {
     imports {
         mavenBom("org.springframework.boot:spring-boot-dependencies:${Versions.springBoot}")
     }
 }
 
+// ─────────────────────────────────────────────────────────────
+// 📚 Dependencies
+// ─────────────────────────────────────────────────────────────
 dependencies {
-    // ✅ Usar dependencias centralizadas
+    // 🌐 Core
     implementation(Dependencies.Spring.bootWebflux)
     implementation(Dependencies.Spring.bootSecurity)
     implementation(Dependencies.Spring.bootOauth2)
 
-    // Observabilidad, OpenAPI, Validaciones
+    // 📊 Observability, 📘 API Docs, ✅ Validation
     implementation(Dependencies.Observability.micrometerPrometheus)
     implementation(Dependencies.OpenAPI.springdocWebflux)
     implementation(Dependencies.Validation.jakartaValidation)
     implementation(Dependencies.Validation.hibernateValidator)
     implementation(Dependencies.Validation.jakartaEl)
 
-    // Logging y seguridad
+    // 📝 Logging
     implementation(Dependencies.Logging.logstashLogback)
 
-    // Test
+    // 🧪 Testing
     testImplementation(Dependencies.Spring.bootTest)
     testImplementation(Dependencies.Test.junitApi)
     testImplementation(Dependencies.Test.junitEngine)
@@ -57,11 +72,17 @@ dependencies {
     testImplementation(Dependencies.Test.springSecurityTest)
 }
 
+// ─────────────────────────────────────────────────────────────
+// ✅ Checkstyle Configuration
+// ─────────────────────────────────────────────────────────────
 checkstyle {
     toolVersion = Versions.checkstyleVersion
     configFile = file("src/main/java/com/company/project/templateservice/config/checkstyle/checkstyle.xml")
 }
 
+// ─────────────────────────────────────────────────────────────
+// 🧪 Test & Coverage
+// ─────────────────────────────────────────────────────────────
 tasks.test {
     useJUnitPlatform()
     finalizedBy("jacocoTestReport")
@@ -69,10 +90,12 @@ tasks.test {
 
 tasks.named<JacocoReport>("jacocoTestReport") {
     dependsOn(tasks.test)
+
     reports {
         xml.required.set(true)
         html.required.set(true)
     }
+
     classDirectories.setFrom(
         fileTree("build/classes/java/main") {
             exclude("**/config/**", "**/dto/**")
