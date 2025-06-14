@@ -1,5 +1,3 @@
-// build.gradle.kts
-
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
@@ -33,15 +31,16 @@ dependencyManagement {
 }
 
 dependencies {
+    // Core app
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("io.swagger.core.v3:swagger-annotations:2.2.33")
 
+    // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.1")
-    testImplementation("com.tngtech.archunit:archunit:1.4.1")
-    testImplementation("com.tngtech.archunit:archunit-junit5:1.4.1")
+    testImplementation("com.tngtech.archunit:archunit:1.3.0")
+    testImplementation("com.tngtech.archunit:archunit-junit5:1.3.0")
     testImplementation("org.springframework.security:spring-security-test")
 }
 
@@ -55,7 +54,6 @@ tasks.test {
     finalizedBy("jacocoTestReport")
 }
 
-// ✅ Modificamos la tarea existente en lugar de crear una nueva
 tasks.named<JacocoReport>("jacocoTestReport") {
     dependsOn(tasks.test)
 
