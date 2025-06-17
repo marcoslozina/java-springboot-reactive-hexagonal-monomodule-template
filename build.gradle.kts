@@ -6,8 +6,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 // 📦 Plugins
 // ─────────────────────────────────────────────────────────────
 plugins {
-    id("jacoco") // Core plugin, no requiere versión
-    id("checkstyle") // Core plugin, no requiere versión
+    id("jacoco")
+    id("checkstyle")
     id("org.springframework.boot") version Versions.springBoot
     id("io.spring.dependency-management") version Versions.dependencyManagement
     kotlin("jvm") version Versions.kotlin
@@ -107,6 +107,14 @@ tasks.named<JacocoReport>("jacocoTestReport") {
     })
 }
 
-tasks.withType<Jar> {
+// ─────────────────────────────────────────────────────────────
+// ⚙️ Spring Boot executable JAR
+// ─────────────────────────────────────────────────────────────
+tasks.named<Jar>("jar") {
+    enabled = false // ❌ Desactiva el JAR plano
+}
+
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    enabled = true // ✅ Activa el JAR ejecutable
     archiveFileName.set("app.jar")
 }
