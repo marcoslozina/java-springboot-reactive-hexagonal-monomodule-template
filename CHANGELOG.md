@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.0.1...v1.1.0) (2025-06-17)
+
+
+### Features
+
+* add roamap ([f18b9d7](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/f18b9d78c0f5275b635892e49fbae999d97a16c5))
+
+
+### Bug Fixes
+
+* eliminando archivos innecesarios ([cc787bd](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/cc787bd2409b0c2e3a4979e50896220e7a24f8e2))
+* fix build.kts ([4c41656](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/4c41656223634207ff568c025bcd42b9d8e9a1d4))
+* fix docker-compose ([754e305](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/754e305937bed445f92d2d1be3df5dcc751bb3d1))
+* update readme ([269d4bf](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/269d4bf9d04a4544d8f8238e01c9b5a5694ee2e8))
+
 ## [1.0.1](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.0.0...v1.0.1) (2025-06-14)
 
 
