@@ -106,3 +106,7 @@ tasks.named<JacocoReport>("jacocoTestReport") {
         include("jacoco/test.exec")
     })
 }
+
+tasks.withType<Jar> {
+    archiveFileName.set("app.jar")
+}
