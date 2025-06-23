@@ -1,4 +1,4 @@
-package com.company.project.templateservice.controller;
+package com.company.project.templateservice.adapters.in.rest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

@@ -6,7 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@WebFluxTest(controllers = AdminController.class)
+@WebFluxTest(controllers = com.company.project.templateservice.adapters.in.rest.AdminController.class)
 @Import(TestSecurityConfig.class)
 class AdminControllerTest {
 

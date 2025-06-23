@@ -13,7 +13,6 @@ spring:
   application:
     name: template-service
 
-  # 📌 Configuración de Base de Datos Reactiva
   r2dbc:
     url: ${DB_URL:r2dbc:h2:mem:///testdb?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
     username: ${DB_USERNAME:sa}
@@ -26,9 +25,8 @@ spring:
 
   sql:
     init:
-      mode: always  # Permitir carga de scripts SQL al iniciar en H2
+      mode: always
 
-  # 🔐 Configuración de Seguridad OAuth2 y JWT
   security:
     oauth2:
       resourceserver:
@@ -36,7 +34,6 @@ spring:
           issuer-uri: https://tu-proveedor-oauth2.com/
           jwk-set-uri: https://tu-proveedor-oauth2.com/.well-known/jwks.json
 
-  # ⚡ Configuración de Kafka Reactivo
   kafka:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     producer:
@@ -56,7 +53,7 @@ logging:
     root: INFO
     org.springframework: INFO
     org.springframework.r2dbc: DEBUG
-    org.apache.kafka: WARN  # Reducir el ruido de Kafka en logs
+    org.apache.kafka: WARN
 
 management:
   endpoints:
@@ -71,9 +68,13 @@ management:
       prometheus:
         enabled: true
 
+# Configuración para generar y mostrar documentación OpenAPI con Swagger UI
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
     enabled: true
+    configUrl: /v3/api-docs/swagger-config     # <-- apuntar al config JSON
+    # alternativa en lugar de configUrl:
+    # url: /v3/api-docs
   api-docs:
     enabled: true

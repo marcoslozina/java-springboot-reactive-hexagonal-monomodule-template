@@ -1,0 +1,9 @@
+docker rm -f $(docker ps -aq)  # ⚠️ Elimina todos los contenedores
+docker volume prune -f         # ⚠️ Elimina volúmenes no usados
+docker image prune -af         # ⚠️ Elimina todas las imágenes sin tag
+docker compose up --build
+
+
+docker compose down -v --remove-orphans
+docker image prune -af  # Elimina imágenes dangling o corruptas
+docker compose up --build

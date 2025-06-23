@@ -1,6 +1,7 @@
 package com.company.project.templateservice.integration;
 
-import com.company.project.templateservice.controller.AdminController;
+
+import com.company.project.templateservice.adapters.in.rest.AdminController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
