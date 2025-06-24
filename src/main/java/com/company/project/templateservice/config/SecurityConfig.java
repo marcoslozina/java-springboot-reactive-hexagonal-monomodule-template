@@ -18,10 +18,11 @@ public class SecurityConfig {
                 .pathMatchers(
                     "/swagger-ui.html",
                     "/swagger-ui/**",
+                    "/v3/api-docs",
                     "/v3/api-docs/**",
                     "/v3/api-docs.yaml",
                     "/v3/api-docs/swagger-config",
-                    "/webjars/**",  // ⚠️ Esto es esencial
+                    "/webjars/**",
                     "/public/**"
                 ).permitAll()
                 .anyExchange().authenticated() // <-- todo lo demás requiere JWT

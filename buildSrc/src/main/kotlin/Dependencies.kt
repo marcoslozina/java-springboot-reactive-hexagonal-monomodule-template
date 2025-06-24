@@ -25,6 +25,7 @@ object Dependencies {
 
     object OpenAPI {
         val springdocWebflux = "org.springdoc:springdoc-openapi-starter-webflux-ui:${Versions.springdocOpenApi}"
+        val swaggerUi = "org.webjars:swagger-ui:${Versions.swaggerUi}"
     }
 
     object Validation {

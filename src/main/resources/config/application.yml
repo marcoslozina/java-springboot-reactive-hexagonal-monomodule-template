@@ -68,13 +68,11 @@ management:
       prometheus:
         enabled: true
 
-# Configuración para generar y mostrar documentación OpenAPI con Swagger UI
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+    url: /v3/api-docs
     enabled: true
-    configUrl: /v3/api-docs/swagger-config     # <-- apuntar al config JSON
-    # alternativa en lugar de configUrl:
-    # url: /v3/api-docs
   api-docs:
     enabled: true
+
