@@ -15,7 +15,7 @@ class SecureControllerTest {
 
     @Test
     @WithMockUser // ⬅️ Simula un usuario autenticado
-    void helloSecure_shouldReturnMessage() {
+    void helloSecureShouldReturnMessage() {
         webTestClient.get()
             .uri("/secure/hello")
             .exchange()
