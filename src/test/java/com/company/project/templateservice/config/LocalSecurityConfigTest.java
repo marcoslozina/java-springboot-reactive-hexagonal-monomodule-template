@@ -16,7 +16,7 @@ class LocalSecurityConfigTest {
     private WebTestClient webTestClient;
 
     @Test
-    void anyEndpoint_shouldBeAccessibleWithoutAuth_whenLocalProfileActive() {
+    void anyEndpointAccessibleWithLocalProfile() {
         webTestClient.get()
             .uri("/secure/hello")
             .exchange()

@@ -14,7 +14,7 @@ class SecurityConfigTest {
     private WebTestClient webTestClient;
 
     @Test
-    void publicEndpoint_shouldBeAccessibleWithoutAuth() {
+    void publicEndpointAccessibleWithoutAuth() {
         webTestClient.get()
             .uri("/swagger-ui.html")
             .exchange()
@@ -23,7 +23,7 @@ class SecurityConfigTest {
     }
 
     @Test
-    void secureEndpoint_shouldBeUnauthorizedWithoutToken() {
+    void secureEndpointUnauthorizedWithoutToken() {
         webTestClient.get()
             .uri("/secure/hello")
             .exchange()
