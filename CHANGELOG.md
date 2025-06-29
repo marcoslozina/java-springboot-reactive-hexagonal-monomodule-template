@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.1.0](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.0.1...v1.1.0) (2025-06-29)
+
+
+### Features
+
+* add roamap ([f18b9d7](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/f18b9d78c0f5275b635892e49fbae999d97a16c5))
+
+
+### Bug Fixes
+
+* add test ([7fcfba2](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/7fcfba2e054498270831e614cbd2449461c607f0))
+* coverage ([a5e167f](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/a5e167f2a6e2943a8a631eea53d2a93561a47691))
+* eliminando archivos innecesarios ([cc787bd](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/cc787bd2409b0c2e3a4979e50896220e7a24f8e2))
+* fix build.kts ([4c41656](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/4c41656223634207ff568c025bcd42b9d8e9a1d4))
+* fix ci ([bca1fce](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/bca1fcef35a980449c8ac4a41ec3bd245692d6d7))
+* fix coverage configuration ([57b304d](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/57b304dfced5f476291076712b9ecf7c111f4406))
+* fix coverage configurtion ([4306ad5](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/4306ad5ba90b2220f1bd09cc6f106653ae5ce2f1))
+* fix docker ([3998948](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/399894898d0215dd4543b65d29dbd4a0c728de5d))
+* fix docker-compose ([754e305](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/754e305937bed445f92d2d1be3df5dcc751bb3d1))
+* fix package configuration ([16108d5](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/16108d506dc6f31fdbcda1e67b9ac9a05576dc9a))
+* fix security config ([cb8a42c](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/cb8a42c752e1fe81966df948a2c680302a3bae20))
+* fix security issues ([db4c8fd](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/db4c8fd3bd735d4134fdf518dc4a79f9bb395534))
+* fix sonar ([e385252](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/e385252be62219d32f8e5bc01fde0ee7b31c7d90))
+* fix sonar ([d991df3](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/d991df31e8d3e1659a17e7b93b456281a0e9f262))
+* sonar properties ([c8027fc](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/c8027fc1a9cbc2f6354a2384f6038fe5112955d3))
+* sonar test ([88fd6bc](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/88fd6bc19304c27e9d13998ec361071706365146))
+* swagger config ([de874f4](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/de874f4abd9e4b766fcf7441af78cf7e724555f1))
+* update readme ([269d4bf](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/269d4bf9d04a4544d8f8238e01c9b5a5694ee2e8))
+
 ## [1.0.1](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.0.0...v1.0.1) (2025-06-14)
 
 
