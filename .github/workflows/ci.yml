@@ -17,10 +17,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      ##############################################################
-      # 🧱 Project setup & build
-      ##############################################################
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -36,10 +32,6 @@ jobs:
       - name: Run tests and generate coverage reports
         run: ./gradlew clean build jacocoTestReport --no-daemon
 
-      ##############################################################
-      # 📦 Upload test and coverage reports as artifacts
-      ##############################################################
-
       - name: Upload test report
         if: always()
         uses: actions/upload-artifact@v4
@@ -54,10 +46,6 @@ jobs:
           name: jacoco-report
           path: build/reports/jacoco/
 
-      ##############################################################
-      # 📊 SonarCloud static code analysis
-      ##############################################################
-
       - name: SonarCloud Analysis
         uses: SonarSource/sonarqube-scan-action@v5.2.0
         env:
@@ -69,14 +57,10 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco/test/jacocoTestReport.xml
 
-      ##############################################################
-      # 📊 Generate coverage and vulnerability JSONs
-      ##############################################################
-
       - name: Install required tools
         run: sudo apt-get update && sudo apt-get install -y libxml2-utils jq
 
-      - name: Generate coverage.json (LINE-based)
+      - name: Generate coverage.json
         run: |
           mkdir -p .badge-data
 
@@ -128,34 +112,22 @@ jobs:
             '{schemaVersion:1,label:"Vulnerabilities",message:$message,color:$color}' \
             > .badge-data/security.json
 
-      - name: Show updated badge data
-        run: |
-          echo "📋 Contents of badge files:"
-          cat .badge-data/*.json || echo "No badge files"
-          echo "--- Git status ---"
-          git status
-
-      ##############################################################
-      # 🚀 Deploy badge data to GitHub Pages (gh-pages branch)
-      ##############################################################
-
       - name: Commit and push badge files to gh-pages
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-          git clone --depth=1 --branch=gh-pages https://github.com/${{ github.repository }} gh-pages || {
+          git clone --depth=1 --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages || {
             echo "📁 gh-pages branch doesn't exist. Creating it..."
             mkdir gh-pages
             cd gh-pages
             git init
             git checkout -b gh-pages
-            git remote add origin https://github.com/${{ github.repository }}
+            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           }
 
           cp .badge-data/*.json gh-pages/
           cd gh-pages
           git add *.json
           git commit -m "📊 Update badges" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
-
+          git push origin gh-pages
