@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.1.0...v1.1.1) (2025-06-29)
+
+
+### Bug Fixes
+
+* add coverage ([eb2237e](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/eb2237e6313a4605c61eccdc685f7f05a7497c22))
+* coverage configuration ([86b173d](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/86b173d8a63a3b240e7008d6e4bbc76d654a2888))
+* fix checkstile config ([170a739](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/170a739d59816d8c2aa7563df3bd844173828fe2))
+
 ## [1.1.0](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.0.1...v1.1.0) (2025-06-29)
 
 
