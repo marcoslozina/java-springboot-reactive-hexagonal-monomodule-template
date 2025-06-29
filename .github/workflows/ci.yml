@@ -157,4 +157,5 @@ jobs:
           cd gh-pages
           git add *.json
           git commit -m "📊 Update badges" || echo "No changes to commit"
-          git push origin gh-pages
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
+
