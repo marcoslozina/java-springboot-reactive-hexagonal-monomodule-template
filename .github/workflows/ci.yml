@@ -79,8 +79,8 @@ jobs:
       - name: Generate coverage.json
         run: |
           mkdir -p .badge-data
-          coverage=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@covered)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
-          missed=$(xmllint --xpath "string(//report/counter[@type='INSTRUCTION']/@missed)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
+          coverage=$(xmllint --xpath "string(//report/counter[@type='LINE']/@covered)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
+          missed=$(xmllint --xpath "string(//report/counter[@type='LINE']/@missed)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
           total=$((coverage + missed))
 
           if [ "$total" -eq 0 ]; then
