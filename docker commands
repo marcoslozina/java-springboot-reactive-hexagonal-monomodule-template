@@ -6,7 +6,7 @@ docker compose up --build
 
 docker compose down -v --remove-orphans
 docker image prune -af  # Elimina imágenes dangling o corruptas
-docker compose up --build
+docker-compose up --build
 
 ./gradlew clean bootJar
 docker-compose up --build
