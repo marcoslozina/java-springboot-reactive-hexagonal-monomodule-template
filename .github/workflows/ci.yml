@@ -76,20 +76,21 @@ jobs:
       - name: Install required tools
         run: sudo apt-get update && sudo apt-get install -y libxml2-utils jq
 
-      - name: Generate coverage.json
+      - name: Generate coverage.json (LINE-based)
         run: |
           mkdir -p .badge-data
-          coverage=$(xmllint --xpath "string(//report/counter[@type='LINE']/@covered)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
+
+          covered=$(xmllint --xpath "string(//report/counter[@type='LINE']/@covered)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
           missed=$(xmllint --xpath "string(//report/counter[@type='LINE']/@missed)" build/reports/jacoco/test/jacocoTestReport.xml || echo "0")
-          total=$((coverage + missed))
+          total=$((covered + missed))
 
           if [ "$total" -eq 0 ]; then
             percent="0.0"
           else
-            percent=$(awk "BEGIN {printf \"%.1f\", ($coverage/$total)*100}")
+            percent=$(awk "BEGIN {printf \"%.1f\", ($covered/$total)*100}")
           fi
 
-          if (( $(echo "$percent >= 80" | bc -l) )); then
+          if (( $(echo "$percent >= 90" | bc -l) )); then
             color="brightgreen"
           elif (( $(echo "$percent >= 50" | bc -l) )); then
             color="yellow"
@@ -143,11 +144,17 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-          git fetch origin gh-pages || true
-          git worktree add gh-pages gh-pages || git checkout --orphan gh-pages
+          git clone --depth=1 --branch=gh-pages https://github.com/${{ github.repository }} gh-pages || {
+            echo "📁 gh-pages branch doesn't exist. Creating it..."
+            mkdir gh-pages
+            cd gh-pages
+            git init
+            git checkout -b gh-pages
+            git remote add origin https://github.com/${{ github.repository }}
+          }
 
           cp .badge-data/*.json gh-pages/
           cd gh-pages
           git add *.json
           git commit -m "📊 Update badges" || echo "No changes to commit"
-          git push origin HEAD:gh-pages
+          git push origin gh-pages
