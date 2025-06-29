@@ -1,4 +1,4 @@
-package com.company.project.templateservice.controller;
+package com.company.project.templateservice.controller.adapters.in.rest;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;

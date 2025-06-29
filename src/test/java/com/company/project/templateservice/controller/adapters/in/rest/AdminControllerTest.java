@@ -1,4 +1,4 @@
-package com.company.project.templateservice.controller;
+package com.company.project.templateservice.controller.adapters.in.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @WebFluxTest(controllers = com.company.project.templateservice.adapters.in.rest.AdminController.class)
-@Import(TestSecurityConfig.class)
+@Import(com.company.project.templateservice.controller.adapters.in.rest.TestSecurityConfig.class)
 @ActiveProfiles("test")
 class AdminControllerTest {
 
