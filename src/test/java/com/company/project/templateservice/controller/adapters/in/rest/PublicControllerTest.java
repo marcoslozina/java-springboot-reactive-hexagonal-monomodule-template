@@ -12,7 +12,7 @@ public class PublicControllerTest {
     WebTestClient webTestClient;
 
     @Test
-    void helloPublic_returnsExpectedMessage() {
+    void helloPublicReturnsExpectedMessage() {
         webTestClient.get()
             .uri("/public/hello")
             .exchange()
