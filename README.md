@@ -6,7 +6,7 @@
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=marcoslozina_java-springboot-reactive-hexagonal-monomodule-template)
 ![Dependabot](https://img.shields.io/badge/dependabot-active-brightgreen.svg)
 ![Vulnerabilities](https://img.shields.io/endpoint?url=https://marcoslozina.github.io/java-springboot-reactive-hexagonal-monomodule-template/security.json&cacheSeconds=60)
-[![Last Release](https://img.shields.io/github/v/release/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template?label=Release)](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/releases)
+[![Last Release](https://img.shields.io/github/release/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template.svg?label=Release&cacheSeconds=10)](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/releases)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ## 🌟 Overview
 
