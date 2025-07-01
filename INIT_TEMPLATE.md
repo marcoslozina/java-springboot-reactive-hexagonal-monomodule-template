@@ -13,7 +13,7 @@ Este archivo te guía paso a paso para personalizar correctamente un nuevo proye
 
 - [ ] Cambiar el paquete base si aplica:
   - Desde: `com.company.project`
-  - Hacia: `com.miempresa.miapp`
+  - Hacia: `com.marcoslozina.investalerts`
   - Usar "Buscar y Reemplazar" en el IDE
 
 ---
@@ -40,14 +40,53 @@ Este archivo te guía paso a paso para personalizar correctamente un nuevo proye
 - [ ] `gradle.properties` (opcional)
   - No suele requerir cambios salvo que ajustes `javaVersion`
 
+- [ ] `build.gradle.kts`
+  - Ajustar configuración de Checkstyle para reflejar el nuevo package base del proyecto
+  ```kotlin
+  checkstyle {
+      toolVersion = "10.3.1"
+      configFile = file("config/checkstyle/checkstyle.xml")
+      isIgnoreFailures = false
+  }
+
+  tasks.withType<Checkstyle>().configureEach {
+      reports {
+          xml.required.set(false)
+          html.required.set(true)
+      }
+      source("src/main/java/com/marcoslozina/investalerts")
+  }
+  ```
+
 ---
 
 ## 🔐 3. Agregar GitHub Secrets (en el nuevo repositorio)
 
-- [ ] `SONAR_TOKEN`
-- [ ] `GH_TOKEN` (para publicar a GitHub Pages)
-- [ ] `RELEASE_PLEASE_TOKEN` (si usás Release Please)
-- [ ] `GIST_ID` y/o `COVERAGE_JSON_URL` si usás badges externos
+### `SONAR_TOKEN`
+Token necesario para autenticarte con SonarCloud y ejecutar análisis de calidad de código.  
+Pasos para obtenerlo:
+1. Ir a [https://sonarcloud.io/account/security](https://sonarcloud.io/account/security)
+2. En "Generate Tokens", escribir un nombre (ej: `invest-alerts-sonar-token`)
+3. Presionar **Generate**
+4. Copiar el token y guardarlo
+5. Ir al repo en GitHub → `Settings > Secrets and variables > Actions`
+6. Crear nuevo secreto: `SONAR_TOKEN`
+
+### `RELEASE_PLEASE_TOKEN`
+Token de acceso a GitHub usado por la acción `release-please` para crear versiones y releases.  
+Pasos para generarlo:
+1. Ir a [https://github.com/settings/tokens](https://github.com/settings/tokens)
+2. Elegir "Tokens (classic)" → **Generate new token**
+3. Scopes:
+   - `repo` ✅
+   - `workflow` ✅
+4. Crear y copiar el token
+5. Ir al repo en GitHub → `Settings > Secrets and variables > Actions`
+6. Crear nuevo secreto: `RELEASE_PLEASE_TOKEN`
+
+### Otros (si usás badges externos):
+- `GH_TOKEN`: para publicar en GitHub Pages (opcional, usar token clásico con `repo` scope)
+- `GIST_ID` y/o `COVERAGE_JSON_URL`: si los badges de cobertura/vulnerabilidades se actualizan desde un gist o endpoint externo
 
 ---
 
@@ -79,3 +118,23 @@ Este archivo te guía paso a paso para personalizar correctamente un nuevo proye
 - [ ] Borrar este archivo `INIT_TEMPLATE.md` una vez que el setup esté completo ✅
 - [ ] Verificar que `./gradlew build` y `./gradlew sonarqube` funcionen correctamente
 - [ ] Confirmar que los badges del README se actualicen en `gh-pages`
+---
+
+## 🌐 7. Crear rama `gh-pages` (si usás GitHub Pages para publicar coverage o badges)
+
+- [ ] Crear manualmente la rama `gh-pages` vacía:
+  ```bash
+  git checkout --orphan gh-pages
+  git rm -rf .
+  touch .nojekyll
+  git add .nojekyll
+  git commit -m "init gh-pages"
+  git push origin gh-pages
+  git checkout main
+  ```
+
+- [ ] Asegurarse de que `coverage.json` y `security.json` se publiquen allí automáticamente desde CI
+
+- [ ] Verificar en GitHub → `Settings > Pages` que la fuente esté configurada como:
+  - Branch: `gh-pages`
+  - Folder: `/root`
