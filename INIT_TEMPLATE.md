@@ -1,3 +1,4 @@
+
 # 🚀 INIT_TEMPLATE.md – Checklist de Inicialización de Proyecto
 
 Este archivo te guía paso a paso para personalizar correctamente un nuevo proyecto clonado desde este template base (`java-springboot-reactive-hexagonal-monomodule-template`).
@@ -22,12 +23,29 @@ Este archivo te guía paso a paso para personalizar correctamente un nuevo proye
 
 - [ ] `README.md`
   - Reemplazar nombre del proyecto y descripción
-  - Cambiar enlaces en badges (CI, cobertura, release, SonarCloud)
-  - Actualizar imágenes si son propias del template (cambiar rutas)
+  - Cambiar enlaces en badges:
+    - ✅ CI: verificar que el archivo del workflow se llame `ci.yml`
+      ```markdown
+      [![CI](https://github.com/usuario/repositorio/actions/workflows/ci.yml/badge.svg?branch=main)](...)
+      ```
+    - ✅ Release: usar este badge para mejor compatibilidad
+      ```markdown
+      [![Last Release](https://img.shields.io/github/release/usuario/repositorio.svg?label=Release)](...)
+      ```
+    - ✅ Coverage y Vulnerabilities: asegurarse que los `.json` estén publicados en `gh-pages`
+      ```markdown
+      ![Coverage](https://img.shields.io/endpoint?url=https://usuario.github.io/repositorio/coverage.json)
+      ![Vulnerabilities](https://img.shields.io/endpoint?url=https://usuario.github.io/repositorio/security.json)
+      ```
+    - ✅ SonarCloud: confirmar que el `projectKey` esté correctamente vinculado
 
 - [ ] `sonar-project.properties`
-  - Cambiar `sonar.projectKey` y `sonar.organization`
-  - Asegurarse de tener el token `SONAR_TOKEN` configurado en GitHub
+  - Cambiar:
+    ```properties
+    sonar.projectKey=tu_usuario_tu_repositorio
+    sonar.organization=tu_organizacion
+    ```
+  - Asegurarse de que coincida exactamente con lo definido en el workflow `ci.yml`
 
 - [ ] `.env`
   - Renombrar base de datos (`DB_NAME=invest_alerts_db`)
@@ -64,44 +82,36 @@ Este archivo te guía paso a paso para personalizar correctamente un nuevo proye
 
 ### `SONAR_TOKEN`
 Token necesario para autenticarte con SonarCloud y ejecutar análisis de calidad de código.  
-Pasos para obtenerlo:
+Pasos:
 1. Ir a [https://sonarcloud.io/account/security](https://sonarcloud.io/account/security)
-2. En "Generate Tokens", escribir un nombre (ej: `invest-alerts-sonar-token`)
-3. Presionar **Generate**
-4. Copiar el token y guardarlo
-5. Ir al repo en GitHub → `Settings > Secrets and variables > Actions`
-6. Crear nuevo secreto: `SONAR_TOKEN`
+2. Generar y copiar el token
+3. Ir al repo → `Settings > Secrets and variables > Actions`
+4. Crear nuevo secreto llamado: `SONAR_TOKEN`
+
+> ⚠️ Usar el nombre exacto: `SONAR_TOKEN` (sin sufijos como `_3`)
 
 ### `RELEASE_PLEASE_TOKEN`
-Token de acceso a GitHub usado por la acción `release-please` para crear versiones y releases.  
-Pasos para generarlo:
-1. Ir a [https://github.com/settings/tokens](https://github.com/settings/tokens)
-2. Elegir "Tokens (classic)" → **Generate new token**
-3. Scopes:
-   - `repo` ✅
-   - `workflow` ✅
-4. Crear y copiar el token
-5. Ir al repo en GitHub → `Settings > Secrets and variables > Actions`
-6. Crear nuevo secreto: `RELEASE_PLEASE_TOKEN`
-
-### Otros (si usás badges externos):
-- `GH_TOKEN`: para publicar en GitHub Pages (opcional, usar token clásico con `repo` scope)
-- `GIST_ID` y/o `COVERAGE_JSON_URL`: si los badges de cobertura/vulnerabilidades se actualizan desde un gist o endpoint externo
+Token de acceso a GitHub usado por `release-please`  
+Pasos:
+1. Generar un token clásico en [https://github.com/settings/tokens](https://github.com/settings/tokens)
+2. Scopes: `repo` y `workflow`
+3. Crear secreto en el repo llamado: `RELEASE_PLEASE_TOKEN`
 
 ---
 
 ## ⚙️ 4. Ajustar workflows de GitHub Actions
 
 - [ ] `.github/workflows/ci.yml`
-  - Cambiar `sonar.projectKey` y `organization`
-  - Revisar que `coverage.json` y `security.json` se publiquen en la rama correcta
+  - Verificar que `sonar.projectKey` coincida con `sonar-project.properties`
+  - Confirmar publicación de `coverage.json` y `security.json` en la rama `gh-pages`
+  - Usar el secreto `SONAR_TOKEN` correctamente nombrado
 
 - [ ] `.github/workflows/release-please.yml`
-  - Confirmar que el token esté disponible como secret
-  - Cambiar patrón de nombre si lo deseás
+  - Confirmar que el token `RELEASE_PLEASE_TOKEN` esté configurado
+  - Revisar si querés cambiar la convención de versiones
 
 - [ ] `.github/workflows/upload-jar.yml`
-  - Verificá que el JAR generado tenga el nombre correcto
+  - Verificá que el JAR generado tenga el nombre correcto (`app.jar`, etc.)
 
 ---
 
@@ -116,13 +126,14 @@ Pasos para generarlo:
 ## 📜 6. Otros
 
 - [ ] Borrar este archivo `INIT_TEMPLATE.md` una vez que el setup esté completo ✅
-- [ ] Verificar que `./gradlew build` y `./gradlew sonarqube` funcionen correctamente
-- [ ] Confirmar que los badges del README se actualicen en `gh-pages`
+- [ ] Confirmar que `./gradlew build` y `./gradlew sonarqube` funcionen correctamente
+- [ ] Confirmar que todos los badges del README se visualicen correctamente
+
 ---
 
-## 🌐 7. Crear rama `gh-pages` (si usás GitHub Pages para publicar coverage o badges)
+## 🌐 7. Crear rama `gh-pages` (si usás GitHub Pages para coverage o badges)
 
-- [ ] Crear manualmente la rama `gh-pages` vacía:
+- [ ] Crear manualmente la rama vacía:
   ```bash
   git checkout --orphan gh-pages
   git rm -rf .
@@ -133,8 +144,8 @@ Pasos para generarlo:
   git checkout main
   ```
 
-- [ ] Asegurarse de que `coverage.json` y `security.json` se publiquen allí automáticamente desde CI
+- [ ] Activar GitHub Pages:
+  - Ir a `Settings > Pages`
+  - Elegir fuente: `gh-pages` y carpeta `/ (root)`
 
-- [ ] Verificar en GitHub → `Settings > Pages` que la fuente esté configurada como:
-  - Branch: `gh-pages`
-  - Folder: `/root`
+- [ ] Confirmar que los archivos `.badge-data/*.json` se publiquen en cada push desde CI
