@@ -126,6 +126,18 @@ Plantilla productiva de microservicio reactivo con Spring Boot 3.2, basada en Ar
 - Requerimiento de 2 approvals para actualizaciones mayores
 - Notificaciones Slack para alertas de seguridad
 
+## ☕ Donaciones
+
+Si este proyecto o el libro te fueron útiles, podés apoyar el desarrollo con una donación. Tu apoyo ayuda a mantener y mejorar este tipo de contenido educativo.
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/codefuel)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=4TYGJ5S8CLX8J)
+
+- ☕ [Buy Me a Coffee](https://buymeacoffee.com/codefuel)
+- 💳 [PayPal Donate](https://www.paypal.com/donate/?hosted_button_id=4TYGJ5S8CLX8J)
+
+---
+
 ## 📜 Licencia
 
 Este proyecto está licenciado bajo la licencia MIT. Ver `LICENSE` para más detalles.
