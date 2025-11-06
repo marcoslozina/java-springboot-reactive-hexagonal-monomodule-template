@@ -27,9 +27,9 @@ Plantilla productiva de microservicio reactivo con Spring Boot 3.2, basada en Ar
 | Componente     | Versión | Módulo         |
 |----------------|---------|----------------|
 | Java           | 21      | Todos          |
-| Spring Boot    | 3.2.5   | Infrastructure |
-| Spring WebFlux | 3.2.5   | Adapters:In    |
-| Gradle (KTS)   | 8.7     | Raíz           |
+| Spring Boot    | 3.5.3   | Infrastructure |
+| Spring WebFlux | 3.5.3   | Adapters:In    |
+| Gradle (KTS)   | 8.12    | Raíz           |
 
 ### Persistencia
 
@@ -42,8 +42,8 @@ Plantilla productiva de microservicio reactivo con Spring Boot 3.2, basada en Ar
 
 | Componente       | Versión | Módulo         |
 |------------------|---------|----------------|
-| Micrometer       | 1.12.3  | Infrastructure |
-| Logstash Logback | 7.4     | Shared         |
+| Micrometer       | 1.15.0  | Infrastructure |
+| Logstash Logback | 8.1     | Shared         |
 | SonarCloud       | Latest  | CI/CD          |
 
 ### Seguridad

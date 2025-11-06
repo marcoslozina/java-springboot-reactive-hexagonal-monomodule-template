@@ -19,7 +19,7 @@ class SecurityConfigTest {
             .uri("/swagger-ui.html")
             .exchange()
             .expectStatus().is3xxRedirection()
-            .expectHeader().valueMatches("Location", ".*/webjars/swagger-ui/index.html.*");
+            .expectHeader().valueMatches("Location", ".*/swagger-ui/index.html.*");
     }
 
     @Test
