@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.1.1...v1.2.0) (2025-11-06)
+
+
+### Features
+
+* add init template ([95bab30](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/commit/95bab305c0ed012b5945d54022cb547ed883338b))
+
 ## [1.1.1](https://github.com/marcoslozina/java-springboot-reactive-hexagonal-monomodule-template/compare/v1.1.0...v1.1.1) (2025-06-29)
 
 
