@@ -2,5 +2,13 @@
   "devDependencies": {
     "@release-it/conventional-changelog": "^10.0.1",
     "release-it": "^19.0.1"
+  },
+  "overrides": {
+    "handlebars": "4.7.9",
+    "basic-ftp": "5.2.2",
+    "lodash": "4.18.1",
+    "defu": "6.1.5",
+    "undici": "6.27.0",
+    "tmp": "0.2.7"
   }
 }
