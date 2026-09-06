@@ -7,39 +7,36 @@ object Versions {
     // ───────────────────────────────────────────────────────────────
     // 🔧 Gradle Plugins & Toolchain
     // ───────────────────────────────────────────────────────────────
-    const val springBoot = "3.5.3" // ✅ Actualizado de 3.4.5
+    const val springBoot = "3.5.16" // ✅ Actualizado de 3.5.3 (última patch de la línea 3.5.x)
     const val dependencyManagement = "1.1.7"
     const val kotlin = "2.2.0" // ✅ Actualizado de 2.1.0
     const val kotlinSpring = "2.2.0" // ✅ Actualizado de 2.1.0
-    const val jacoco = "0.8.12" // ✅ Actualizado de 0.8.10
+    const val jacoco = "0.8.15" // ✅ Actualizado de 0.8.12
     const val checkstyleVersion = "10.13.0" // ✅ Actualizado de 10.12.2
 
     // ───────────────────────────────────────────────────────────────
     // 📈 Observability & Monitoring
     // ───────────────────────────────────────────────────────────────
-    const val micrometer = "1.15.0" // ✅ Actualizado de 1.14.2 - Micrometer metrics for Prometheus
+    const val micrometer = "1.17.1" // ✅ Actualizado de 1.15.0 - Micrometer metrics for Prometheus
 
     // ───────────────────────────────────────────────────────────────
     // 📘 API Documentation (OpenAPI / Swagger)
     // ───────────────────────────────────────────────────────────────
     const val springdocOpenApi = "2.8.6" // ✅ Actualizado de 2.6.0
-    const val swaggerUi = "5.13.0" // ✅ Actualizado de 4.8.1
 
     // ───────────────────────────────────────────────────────────────
     // ✅ Validation Frameworks
     // ───────────────────────────────────────────────────────────────
     const val jakartaValidation = "3.1.1" // ✅ Actualizado de 3.0.2
-    const val hibernateValidator = "9.0.1.Final" // ✅ Actualizado de 8.0.1.Final
+    const val hibernateValidator = "9.1.3.Final" // ✅ Actualizado de 9.0.1.Final
     const val jakartaEl = "4.0.2" // Versión estable más reciente (5.0.0-M1 es milestone)
 
     // ───────────────────────────────────────────────────────────────
     // 🧪 Testing & QA
     // ───────────────────────────────────────────────────────────────
-    const val junit = "5.11.2" // ✅ Actualizado de 5.10.1 (5.13.0-M3 es milestone, mantener estable)
-    const val junitPlatform = "1.11.2" // ✅ Actualizado de 1.10.1
-    const val wiremock = "3.11.0" // ✅ Actualizado de 3.0.1
-    const val restAssured = "5.5.0" // ✅ Actualizado de 5.3.1
-    const val archunit = "1.3.0" // ✅ Actualizado de 1.2.1
+    const val junit = "5.14.4" // ✅ Actualizado de 5.11.2 (última estable de la línea 5.x, antes de JUnit 6)
+    const val junitPlatform = "1.14.4" // ✅ Actualizado de 1.11.2 (pareja de junit-jupiter 5.14.4)
+    const val archunit = "1.5.0" // ✅ Actualizado de 1.3.0
 
     // ───────────────────────────────────────────────────────────────
     // 📝 Logging

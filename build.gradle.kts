@@ -41,6 +41,10 @@ kotlin {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.boot:spring-boot-dependencies:${Versions.springBoot}")
+        // Spring Boot 3.5.x still manages JUnit 5.12.x/1.12.x internally; importing the JUnit BOM
+        // explicitly keeps jupiter/platform artifacts aligned to Versions.junit (5.14.x line) and
+        // avoids classpath split-brain (NoSuchMethodError) between jupiter and platform jars.
+        mavenBom("org.junit:junit-bom:${Versions.junit}")
     }
 }
 

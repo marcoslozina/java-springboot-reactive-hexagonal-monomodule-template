@@ -25,7 +25,6 @@ object Dependencies {
 
     object OpenAPI {
         val springdocWebflux = "org.springdoc:springdoc-openapi-starter-webflux-ui:${Versions.springdocOpenApi}"
-        val swaggerUi = "org.webjars:swagger-ui:${Versions.swaggerUi}"
     }
 
     object Validation {
@@ -37,8 +36,6 @@ object Dependencies {
     object Test {
         val junitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.junit}"
         val junitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit}"
-        val wiremock = "com.github.tomakehurst:wiremock-jre8:${Versions.wiremock}"
-        val restAssured = "io.rest-assured:rest-assured:${Versions.restAssured}"
         const val reactorTest = "io.projectreactor:reactor-test"
         const val springSecurityTest = "org.springframework.security:spring-security-test"
         val archunit = "com.tngtech.archunit:archunit-junit5:${Versions.archunit}"
