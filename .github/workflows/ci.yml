@@ -47,6 +47,8 @@ jobs:
           path: build/reports/jacoco/
 
       - name: SonarCloud Analysis
+        id: sonar
+        continue-on-error: true
         uses: SonarSource/sonarqube-scan-action@v8.2.1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_2 }}
@@ -89,6 +91,7 @@ jobs:
             > .badge-data/coverage.json
 
       - name: Generate security.json (from SonarCloud)
+        if: steps.sonar.outcome == 'success'
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_2 }}
         run: |

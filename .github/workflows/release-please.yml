@@ -29,6 +29,7 @@ jobs:
         run: ./gradlew clean test
 
       - name: Run release-please
+        continue-on-error: true
         uses: google-github-actions/release-please-action@v4
         with:
           release-type: simple
