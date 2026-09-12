@@ -10,108 +10,108 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ## 🌟 Overview
 
-Plantilla productiva de microservicio reactivo con Spring Boot 3.2, basada en Arquitectura Hexagonal, diseñada con Java 21 y WebFlux para entornos cloud-native.
+Production-grade reactive microservice template built with Spring Boot 3.2, based on Hexagonal Architecture, designed with Java 21 and WebFlux for cloud-native environments.
 
-## ✨ Beneficios de la Arquitectura
+## ✨ Architecture Benefits
 
-- 🧱 Fronteras modulares estrictas
-- ↔️ Flujo de dependencias claro: `domain ← application ← adapters`
-- 🧪 Testabilidad independiente por capa
-- 🚀 Builds paralelos por módulo
-- 🔒 Configuraciones de seguridad aisladas
+- 🧱 Strict modular boundaries
+- ↔️ Clear dependency flow: `domain ← application ← adapters`
+- 🧪 Independent testability per layer
+- 🚀 Parallel builds per module
+- 🔒 Isolated security configurations
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Tech Stack
 
-### Framework Principal
+### Core Framework
 
-| Componente     | Versión | Módulo         |
+| Component      | Version | Module         |
 |----------------|---------|----------------|
-| Java           | 21      | Todos          |
+| Java           | 21      | All            |
 | Spring Boot    | 3.5.3   | Infrastructure |
 | Spring WebFlux | 3.5.3   | Adapters:In    |
-| Gradle (KTS)   | 8.12    | Raíz           |
+| Gradle (KTS)   | 8.12    | Root           |
 
-### Persistencia
+### Persistence
 
-| Componente | Versión | Módulo       |
+| Component  | Version | Module       |
 |------------|---------|--------------|
 | R2DBC      | 3.2.5   | Adapters:Out |
 | Flyway     | 9.22.3  | Adapters:Out |
 
-### Observabilidad
+### Observability
 
-| Componente       | Versión | Módulo         |
+| Component        | Version | Module         |
 |------------------|---------|----------------|
 | Micrometer       | 1.15.0  | Infrastructure |
 | Logstash Logback | 8.1     | Shared         |
 | SonarCloud       | Latest  | CI/CD          |
 
-### Seguridad
+### Security
 
-| Componente       | Versión | Uso                          |
+| Component        | Version | Use                          |
 |------------------|---------|-------------------------------|
-| Dependabot       | Latest  | Actualización dependencias    |
-| GitHub Security  | Latest  | Alertas vulnerabilidades      |
-| OWASP DC         | 8.4.1   | Escaneo CI/CD                 |
+| Dependabot       | Latest  | Dependency updates             |
+| GitHub Security  | Latest  | Vulnerability alerts           |
+| OWASP DC         | 8.4.1   | CI/CD scanning                 |
 
 ## 🔄 CI/CD Pipeline
 
 ![CI/CD Diagram](docs/images/cicd-diagram.png)
 
-### 🔧 Etapas del Pipeline
+### 🔧 Pipeline Stages
 
-- **Build Paralelo**: Compilación independiente por módulo
+- **Parallel Build**: Independent compilation per module
 - **Security Scan**:
     - OWASP Dependency Check
     - CodeQL Analysis
     - Dependabot alerts
 - **Testing**:
-    - Unit tests (por capa)
+    - Unit tests (per layer)
     - Integration tests (Testcontainers)
     - Architecture tests (ArchUnit)
 - **Quality Gate**:
     - SonarCloud analysis
-    - Coverage enforcement (80% mínimo)
+    - Coverage enforcement (80% minimum)
 - **Release**:
-    - Versionado semántico automático
+    - Automatic semantic versioning
     - CHANGELOG generation
     - Artifact publication
 
-## 🔍 Herramientas de Calidad y Seguridad
+## 🔍 Quality and Security Tooling
 
-### 🔒 Seguridad Automatizada
+### 🔒 Automated Security
 
-- **Dependabot**: Actualización diaria de dependencias vulnerables
-- **GitHub Security Alerts**: Monitoreo continuo de vulnerabilidades (CVE)
-- **OWASP Dependency Check**: Escaneo en CI con reporte HTML
-- **CodeQL**: Análisis estático de vulnerabilidades en el código
+- **Dependabot**: Daily updates for vulnerable dependencies
+- **GitHub Security Alerts**: Continuous vulnerability (CVE) monitoring
+- **OWASP Dependency Check**: CI scanning with HTML report
+- **CodeQL**: Static analysis for code vulnerabilities
 
-### 📊 Calidad de Código
+### 📊 Code Quality
 
 - **SonarCloud**:
-    - Análisis estático continuo
-    - Reglas personalizadas para arquitectura hexagonal
-    - Gate de calidad con métricas personalizadas
+    - Continuous static analysis
+    - Custom rules for hexagonal architecture
+    - Quality gate with custom metrics
 - **Release Please**:
-    - Automatización de releases semánticas
-    - Generación de `CHANGELOG.md`
-    - Manejo de conventional commits
+    - Automated semantic releases
+    - `CHANGELOG.md` generation
+    - Conventional commits handling
 
 ## 🚀 Getting Started
 
-### 🔧 Comandos de Desarrollo
+### 🔧 Development Commands
 
 ```bash
-# Ejecutar con live reload
+# Run with live reload
 ./gradlew :infrastructure:bootRun --continuous
 
-# Ejecutar security scan local
+# Run local security scan
 ./gradlew dependencyCheckAnalyze
 
-# Generar reporte para SonarCloud
+# Generate report for SonarCloud
 ./gradlew jacocoRootReport sonarqube
 
-# Ver dependencias vulnerables
+# Check for vulnerable dependencies
 ./gradlew dependencyUpdates -Drevision=release
 ```
 
@@ -119,16 +119,16 @@ Plantilla productiva de microservicio reactivo con Spring Boot 3.2, basada en Ar
 
 ![Security Workflow](docs/images/security-diagram.png)
 
-## 🛡️ Políticas de Seguridad
+## 🛡️ Security Policies
 
-- Escaneo diario automático de dependencias
-- Bloqueo de merges con vulnerabilidades críticas
-- Requerimiento de 2 approvals para actualizaciones mayores
-- Notificaciones Slack para alertas de seguridad
+- Automatic daily dependency scanning
+- Merge blocking on critical vulnerabilities
+- 2-approval requirement for major updates
+- Slack notifications for security alerts
 
-## ☕ Donaciones
+## ☕ Donations
 
-Si este proyecto o el libro te fueron útiles, podés apoyar el desarrollo con una donación. Tu apoyo ayuda a mantener y mejorar este tipo de contenido educativo.
+If this project or the book was useful to you, you can support its development with a donation. Your support helps maintain and improve this kind of educational content.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/codefuel)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=4TYGJ5S8CLX8J)
@@ -138,10 +138,10 @@ Si este proyecto o el libro te fueron útiles, podés apoyar el desarrollo con u
 
 ---
 
-## 📜 Licencia
+## 📜 License
 
-Este proyecto está licenciado bajo la licencia MIT. Ver `LICENSE` para más detalles.
+This project is licensed under the MIT license. See `LICENSE` for details.
 
 ## 🔍 Security Policy
 
-Para reportar vulnerabilidades de seguridad, por favor consulta nuestra Política de Seguridad y utiliza GitHub Security Advisories. Todas las vulnerabilidades serán investigadas dentro de las 24 horas.
+To report security vulnerabilities, please refer to our Security Policy and use GitHub Security Advisories. All vulnerabilities will be investigated within 24 hours.
