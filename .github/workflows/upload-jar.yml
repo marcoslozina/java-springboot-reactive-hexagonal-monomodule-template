@@ -25,7 +25,7 @@ jobs:
         run: ./gradlew clean bootJar
 
       - name: Upload JAR to GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: build/libs/*.jar
         env:
